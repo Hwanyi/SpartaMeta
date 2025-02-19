@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     private Camera _camera;
+    public GameObject flappyUI;
 
     private void Awake()
     {
@@ -36,5 +37,21 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody.velocity = movementDirection * 5.0f;
        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(flappyUI == null)
+            return;
+        
+        flappyUI.SetActive(true);
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(flappyUI == null)
+            return;
+        
+        flappyUI.SetActive(false);
     }
 }

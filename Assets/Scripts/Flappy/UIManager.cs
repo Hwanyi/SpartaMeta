@@ -6,26 +6,37 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI restartText;
+    public TextMeshProUGUI bestScoreText;
+
+    public GameObject startUI;
+    public GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (restartText == null)
-            Debug.LogError("restart text is null");
         if (scoreText == null)
             Debug.LogError("score text text is null");
-
-        restartText.gameObject.SetActive(false);
     }
 
-    public void SetRestart()
+    public void StartGame()
     {
-        restartText.gameObject.SetActive(true);
+        startUI.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        gameOverUI.SetActive(true);
     }
 
     public void UpdateScore(int score)
     {
         scoreText.text = score.ToString();
     }
+
+    public void UpdateBestScore(int score)
+    {
+        bestScoreText.text = score.ToString();
+    }
+
+    
 }

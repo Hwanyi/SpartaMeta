@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public float flapForce = 6.0f;
     public float forwardSpeed = 3.0f;
     public bool isDead = false;
-    float deathCooldown = 0f;
 
     bool isFlap = false;
 
@@ -37,21 +36,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDead)
-        {
-            if (deathCooldown <= 0)
-            {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    gameManager.RestartGame();
-                }
-            }
-            else
-            {
-                deathCooldown -= Time.deltaTime;
-            }
-        }
-        else
+        if(!isDead)
         {
             if ( Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) )
             {
@@ -63,6 +48,12 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDead) return;
+        if(gameManager.state == FlappyManager.State.Start)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            transform.position = Vector3.zero;
+            return;
+        }
 
         Vector3 velocity = _rigidbody.velocity;
         velocity.x = forwardSpeed;
@@ -87,9 +78,8 @@ public class Player : MonoBehaviour
 
         isDead = true;
 
-        deathCooldown = 1.0f;
-
         animator.SetInteger("IsDie", 1);
         gameManager.GameOver();
+
     }
 }

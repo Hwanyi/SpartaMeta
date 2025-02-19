@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MiniGame
   - Flappy
+  - Stack
   layers:
   - Default
   - TransparentFX

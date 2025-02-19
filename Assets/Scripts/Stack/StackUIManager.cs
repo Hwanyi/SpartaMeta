@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum UIState { 
     Home,
@@ -58,11 +59,15 @@ public class StackUIManager : MonoBehaviour
 
     public void OnClickExit()
     {
+        /*
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+        */
+
+        SceneManager.LoadScene("MainScene");
     }
 
     public void UpdateScore()

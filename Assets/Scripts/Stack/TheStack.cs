@@ -40,15 +40,16 @@ public class TheStack : MonoBehaviour
     int bestCombo = 0;
     public int BestCombo { get { return bestCombo; } }
 
-    private const string BestScoreKey = "BestScore";
-    private const string BestComboKey = "BestCombo";
+    private const string BestScoreKey = "BestStackScore";
+    private const string BestComboKey = "BestStackCombo";
 
     private bool isGameOver = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(originBlock == null)
+        Screen.SetResolution(600, 1080, false);
+        if (originBlock == null)
         {
             Debug.Log("OriginBlock is null");
             return;

@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int FlappyBest = 0;
+    private int flappyBest = 0;
+    public TextMeshProUGUI flappyBestText;
 
     // Start is called before the first frame update
     void Start()
     {
         if(PlayerPrefs.HasKey("FlappyBestScore"))
         {
-            FlappyBest = PlayerPrefs.GetInt("FlappyBestScore");
+            flappyBest = PlayerPrefs.GetInt("FlappyBestScore");
         } 
         else
         {
-            FlappyBest = 0;
+            flappyBest = 0;
         }
+
+        flappyBestText.text = flappyBest.ToString();
     }
 
 

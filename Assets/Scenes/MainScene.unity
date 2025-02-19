@@ -4163,6 +4163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2072f4bc5f443f342b87f37f8fbe2966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flappyBestText: {fileID: 1567635959}
 --- !u!4 &513311539
 Transform:
   m_ObjectHideFlags: 0

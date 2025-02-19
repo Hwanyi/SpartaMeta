@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     private int flappyBest = 0;
     public TextMeshProUGUI flappyBestText;
+    public TextMeshProUGUI flappyBoardText;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         }
 
         flappyBestText.text = flappyBest.ToString();
+        flappyBoardText.text = flappyBest.ToString();
     }
 
 

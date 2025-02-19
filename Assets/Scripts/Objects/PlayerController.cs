@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Camera _camera;
     public GameObject flappyUI;
+    public GameObject BoardUI;
 
     private void Awake()
     {
@@ -41,17 +42,39 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(flappyUI == null)
+        if (collision.CompareTag("Flappy"))
+        {
+            if (flappyUI != null)
+                flappyUI.SetActive(true);
+
             return;
-        
-        flappyUI.SetActive(true);
+        }
+
+        if (collision.CompareTag("MiniGame"))
+        {
+            if (BoardUI != null)
+                BoardUI.SetActive(true);
+
+            return;
+        }
     }
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(flappyUI == null)
+        if (collision.CompareTag("Flappy"))
+        {
+            if (flappyUI != null)
+                flappyUI.SetActive(false);
+
             return;
-        
-        flappyUI.SetActive(false);
+        }
+
+        if (collision.CompareTag("MiniGame"))
+        {
+            if (BoardUI != null)
+                BoardUI.SetActive(false);
+
+            return;
+        }
     }
 }

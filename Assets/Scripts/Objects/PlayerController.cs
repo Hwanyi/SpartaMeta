@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Vector2 movementDirection;
     private Rigidbody2D _rigidbody;
@@ -28,13 +28,13 @@ public class CharacterController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         movementDirection = new Vector2(horizontal, vertical).normalized;
-        
-        
+        _camera.transform.position = gameObject.transform.position + Vector3.back;
+
     }
 
     private void FixedUpdate()
     {
         _rigidbody.velocity = movementDirection * 5.0f;
-        _camera.transform.position = gameObject.transform.position + Vector3.back;
+       
     }
 }

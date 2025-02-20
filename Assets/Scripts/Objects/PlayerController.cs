@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Camera _camera;
     public GameObject flappyUI;
     public GameObject BoardUI;
+    public GameObject StackUI;
 
     private void Awake()
     {
@@ -57,6 +58,14 @@ public class PlayerController : MonoBehaviour
 
             return;
         }
+
+        if (collision.CompareTag("Stack"))
+        {
+            if (StackUI != null)
+                StackUI.SetActive(true);
+
+            return;
+        }
     }
     
     private void OnTriggerExit2D(Collider2D collision)
@@ -73,6 +82,14 @@ public class PlayerController : MonoBehaviour
         {
             if (BoardUI != null)
                 BoardUI.SetActive(false);
+
+            return;
+        }
+
+        if (collision.CompareTag("Stack"))
+        {
+            if (StackUI != null)
+                StackUI.SetActive(false);
 
             return;
         }
